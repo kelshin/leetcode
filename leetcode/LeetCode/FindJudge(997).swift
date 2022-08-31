@@ -8,12 +8,13 @@
 import Foundation
 
 func myFindJudge(_ n: Int, _ trust: [[Int]]) -> Int {
-  var people = [[Int]](repeating: [], count: n + 1)
+  var people = [Int](repeating: 0, count: n + 1)
   for i in 0..<trust.count {
-    people[trust[i][0]].append(trust[i][0])
+    people[trust[i][0]] -= 1
+    people[trust[i][1]] += 1
   }
   for i in 1..<people.count{
-    if people[i].isEmpty {
+    if people[i] == n - 1 {
       return i
     }
   }
